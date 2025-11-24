@@ -9,14 +9,17 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext js,jsx",
+    "lint:fix": "eslint . --ext js,jsx --fix",
+    "format": "prettier . --write"
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +38,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.4.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^16.5.0",
+    "prettier": "^3.6.2"
   }
 }
