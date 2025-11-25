@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useId, useMemo } from 'react';
+import PropTypes from 'prop-types';
 
-const TodoList = ({
-  initialToDos = [
-    { id: 1, todo: '1st todo', done: false },
-    { id: 2, todo: '2nd todo', done: false },
-    { id: 3, todo: '3rd todo', done: false },
-    { id: 4, todo: '4th todo', done: false },
-  ],
-  title = '📝 Todo List'
-}) => {
-  const [toDos, setToDos] = useState(initialToDos);
+const defaultTodos = [
+  { todo: '1st todo', done: false },
+  { todo: '2nd todo', done: false },
+  { todo: '3rd todo', done: false },
+  { todo: '4th todo', done: false },
+];
+
+const TodoList = ({ initialToDos = defaultTodos, title = '📝 Todo List' }) => {
+  // Генеруємо унікальний префікс для цього компонента
+  const idPrefix = useId();
+
+  // Створюємо todos з унікальними ID на основі useId префіксу
+  const todosWithIds = useMemo(() => {
+    return initialToDos.map((todo, index) => ({
+      ...todo,
+      id: todo.id || `${idPrefix}-${index}`,
+    }));
+  }, [initialToDos, idPrefix]);
+
+  const [toDos, setToDos] = useState(todosWithIds);
 
   const toggleTodo = id => {
     const updatedToDos = toDos.map(todo =>
@@ -111,6 +122,17 @@ const TodoList = ({
       )}
     </div>
   );
+};
+
+TodoList.propTypes = {
+  initialToDos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      todo: PropTypes.string.isRequired,
+      done: PropTypes.bool.isRequired,
+    }),
+  ),
+  title: PropTypes.string,
 };
 
 export default TodoList;
