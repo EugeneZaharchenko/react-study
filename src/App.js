@@ -2,6 +2,8 @@ import './App.css';
 import HellComponent from './HellComponent';
 import CounterComponent from './CounterComponent';
 import ListComp from './ListComp';
+import RenderComp from './RenderComp';
+import TodoList from './TodoList';
 
 function App() {
   const hell = 'Hi from J0Z';
@@ -15,6 +17,8 @@ function App() {
       </header>
       <ListComp />;
       <CounterComponent />;
+      <RenderComp />
+      <TodoList />
     </div>
   );
 }

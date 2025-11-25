@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 const ListComp = () => {
   const newElement = 'new element';
-  const [item, setItem] = useState([newElement]);
+  const [items, setItems] = useState([newElement]);
   const [input, setInput] = useState([]);
 
   const onClickHandler = input => {
-    const updatedElement = [...item, input];
-    setItem(updatedElement);
+    const updatedElement = [...items, input];
+    setItems(updatedElement);
     setInput('');
   };
 
@@ -16,12 +16,25 @@ const ListComp = () => {
     setInput(value);
   };
 
+  const onEnterHandler = e => {
+    if (e.key === 'Enter') {
+      const updatedElement = [...items, input];
+      setItems(updatedElement);
+      setInput('');
+    }
+  };
+
   return (
     <React.Fragment>
-      <input onChange={onChangeHandler} value={input} />
+      <input
+        onKeyDown={onEnterHandler}
+        onChange={onChangeHandler}
+        value={input}
+      />
 
       <ul>
-        {item.map((element, index) => (
+        <h2>Пунктів: {items.length}</h2>
+        {items.map((element, index) => (
           <li key={index}>
             {index} {element}
           </li>
