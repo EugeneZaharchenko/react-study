@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-const TodoList = () => {
-  const initialToDos = [
+const TodoList = ({
+  initialToDos = [
     { id: 1, todo: '1st todo', done: false },
     { id: 2, todo: '2nd todo', done: false },
     { id: 3, todo: '3rd todo', done: false },
     { id: 4, todo: '4th todo', done: false },
-  ];
-
+  ],
+  title = '📝 Todo List'
+}) => {
   const [toDos, setToDos] = useState(initialToDos);
 
   const toggleTodo = id => {
@@ -32,7 +33,7 @@ const TodoList = () => {
         backgroundColor: '#f9f9f9',
       }}
     >
-      <h2>📝 Todo List</h2>
+      <h2>{title}</h2>
       <p style={{ color: '#666' }}>
         Всього завдань: {toDos.length} | Виконано:{' '}
         {toDos.filter(t => t.done).length} | Залишилось:{' '}

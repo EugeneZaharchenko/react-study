@@ -8,6 +8,12 @@ import TodoList from './TodoList';
 function App() {
   const hell = 'Hi from J0Z';
 
+  const myTodos = [
+    { id: 1, todo: 'Вивчити React', done: false },
+    { id: 2, todo: 'Зробити домашку', done: false },
+    { id: 3, todo: 'Попити кави', done: true },
+  ];
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +24,7 @@ function App() {
       <ListComp />;
       <CounterComponent />;
       <RenderComp />
-      <TodoList />
+      <TodoList initialToDos={myTodos} title="🎯 Мої завдання на сьогодні" />
     </div>
   );
 }
