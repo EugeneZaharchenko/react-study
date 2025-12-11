@@ -8,6 +8,7 @@ import TodoList from './TodoList';
 import LifecycleDemo from './LifecycleDemo';
 // import ClassLifecycleDemo from './ClassLifecycleDemo';
 import UseLayoutEffectDemo from './UseLayoutEffectDemo';
+import Battery from './BatteryComponent';
 
 function App() {
   const hell = 'Hi from J0Z';
@@ -31,6 +32,7 @@ function App() {
         <p>{hell}</p>
 
         <HellComponent />
+        <Battery />
       </header>
       <ListComp />;
       <CounterComponent />;
